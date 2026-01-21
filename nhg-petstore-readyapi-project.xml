@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="c745563f-0967-4451-bfbc-dc064f66d2c0" created="3.64.0" activeEnvironment="Default environment" encryptionMode="Not encrypted" name="nhg-ready-api-pet-store" projectVersion="" resourceRoot="" updated="3.64.0 2025-12-11T09:36:10Z" xmlns:con="http://eviware.com/soapui/config">
+<con:soapui-project id="81ee9734-4caa-46d7-9eca-871006663427" created="3.64.0" activeEnvironment="Default environment" encryptionMode="Not encrypted" name="nhg-petstore" projectVersion="" updated="3.64.0 2025-12-11T09:36:10Z" xmlns:con="http://eviware.com/soapui/config">
   <con:settings/>
-  <con:interface xsi:type="con:RestService" id="0d735244-137c-4def-89df-f773f255418b" lastUpdated="2026-01-21T20:41:11.910+01:00" name="Swagger Petstore" type="rest_ex" wadlVersion="https://swagger.io/swagger2/specification" definitionUrl="https://petstore.swagger.io/v2/swagger.json" basePath="/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:RestService" id="5bea4256-cb9a-467d-a8c5-8c41cfb2657a" lastUpdated="2026-01-21T21:10:31.318+01:00" name="Swagger Petstore" type="rest_ex" wadlVersion="https://swagger.io/swagger2/specification" definitionUrl="https://petstore.swagger.io/v2/swagger.json" basePath="/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:description>This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.</con:description>
-    <con:settings id="c39560fd-548c-4837-9c9c-c37a0dbfe446"/>
+    <con:settings id="2bfd6bfb-a219-479f-850c-7349343bf3e4"/>
     <con:definitionCache type="TEXT" rootPart="https://petstore.swagger.io/v2/swagger.json">
       <con:part>
         <con:url>https://petstore.swagger.io/v2/swagger.json</con:url>
@@ -15,7 +15,7 @@
       <con:endpoint>http://petstore.swagger.io</con:endpoint>
       <con:endpoint>https://petstore.swagger.io</con:endpoint>
     </con:endpoints>
-    <con:resource name="/pet/{petId}/uploadImage" path="/pet/{petId}/uploadImage" id="415ef7ac-8197-4ec9-9903-cdfcec73ab23">
+    <con:resource name="/pet/{petId}/uploadImage" path="/pet/{petId}/uploadImage" id="f657506e-f66a-4b38-9b54-dbf68efd3d87">
       <con:settings/>
       <con:parameters>
         <con:parameter required="true">
@@ -25,7 +25,7 @@
           <con:description>ID of pet to update</con:description>
         </con:parameter>
       </con:parameters>
-      <con:method name="uploadFile" id="d6e1ee6d-4263-4909-b58e-f6a5aa26e510" method="POST">
+      <con:method name="uploadFile" id="ac816ec2-10a7-4c67-ad59-bb7270958398" method="POST">
         <con:description>
 uploads an image</con:description>
         <con:settings/>
@@ -55,17 +55,17 @@ uploads an image</con:description>
           <con:mediaType>multipart/form-data</con:mediaType>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="0e29bafa-d502-4bea-a0b0-b3e4c492ae8b" mediaType="application/json">
+        <con:request name="Request 1" id="4ebd25cf-3910-45b8-9379-6ad43847b429" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:parameters/>
         </con:request>
       </con:method>
     </con:resource>
-    <con:resource name="/pet" path="/pet" id="79e85964-e04e-4722-9574-7b0b909a064c">
+    <con:resource name="/pet" path="/pet" id="d94f1736-e521-4d24-9585-63dbe7ff0170">
       <con:settings/>
       <con:parameters/>
-      <con:method name="addPet" id="7812ef4d-fdeb-46d6-817b-197fa837ce52" method="POST">
+      <con:method name="addPet" id="6a87107c-bd45-4fad-b15d-00c2c5a66df8" method="POST">
         <con:description>
 Add a new pet to the store</con:description>
         <con:settings/>
@@ -115,7 +115,7 @@ Add a new pet to the store</con:description>
           <con:mediaType>application/xml</con:mediaType>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="c05f1e68-5f04-40c6-99b9-c2970a5861b3" mediaType="application/json">
+        <con:request name="Request 1" id="dc174687-8243-4efa-8586-63c7ff8dfa4a" mediaType="application/json" postQueryString="false">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:request/>
@@ -123,10 +123,13 @@ Add a new pet to the store</con:description>
             <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
             <con:authType>No Authorization</con:authType>
           </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
           <con:parameters/>
         </con:request>
-        <con:request name="Request 2" id="7930ddb2-0f63-4e5e-8461-fe050919f753" mediaType="application/xml">
-          <con:settings/>
+        <con:request name="Request 2" id="9f6964be-f3eb-4f47-979c-b685ffc1ead0" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:request><![CDATA[<Pet>
    <id>0</id>
@@ -150,10 +153,11 @@ Add a new pet to the store</con:description>
             <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
             <con:authType>No Authorization</con:authType>
           </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
           <con:parameters/>
         </con:request>
       </con:method>
-      <con:method name="updatePet" id="4b371e1f-089b-4900-9eaa-b55004ecf7f7" method="PUT">
+      <con:method name="updatePet" id="e717e017-a47a-413c-8ba5-121b1c57a697" method="PUT">
         <con:description>
 Update an existing pet</con:description>
         <con:settings/>
@@ -223,7 +227,7 @@ Update an existing pet</con:description>
           <con:mediaType>application/xml</con:mediaType>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="cd75880e-194e-4501-991f-644be6d5dba2" mediaType="application/json">
+        <con:request name="Request 1" id="88267b7e-0e40-4e0b-a0c0-7fbdf544f96b" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:request/>
@@ -233,7 +237,7 @@ Update an existing pet</con:description>
           </con:credentials>
           <con:parameters/>
         </con:request>
-        <con:request name="Request 2" id="a9b04b30-0801-4441-9c52-a3c3c6d01651" mediaType="application/xml">
+        <con:request name="Request 2" id="27acc31c-8350-4af1-a692-a0a08c9b4e90" mediaType="application/xml">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:request><![CDATA[<Pet>
@@ -262,10 +266,10 @@ Update an existing pet</con:description>
         </con:request>
       </con:method>
     </con:resource>
-    <con:resource name="/pet/findByStatus" path="/pet/findByStatus" id="acd4ed28-7abe-45f6-b7b8-89dcaeff39ca">
+    <con:resource name="/pet/findByStatus" path="/pet/findByStatus" id="c1e4a071-f51f-429a-af92-a27d356eb4e4">
       <con:settings/>
       <con:parameters/>
-      <con:method name="findPetsByStatus" id="1a460016-479e-4b8b-8ada-af13fcdd5346" method="GET">
+      <con:method name="findPetsByStatus" id="d4527494-6040-4eb8-aa78-c3e130267cc6" method="GET">
         <con:description>Multiple status values can be provided with comma separated strings
 Finds Pets by status</con:description>
         <con:settings/>
@@ -318,17 +322,17 @@ Finds Pets by status</con:description>
           <con:status>400</con:status>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="e5d464a5-32e2-40ca-b36d-3818fd5019ff" mediaType="application/json">
+        <con:request name="Request 1" id="94a25d88-a7b7-4753-90de-330f46f69f79" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:parameters/>
         </con:request>
       </con:method>
     </con:resource>
-    <con:resource name="/pet/findByTags" path="/pet/findByTags" id="bb882f12-faa7-4903-9e9b-c2529b3a24db">
+    <con:resource name="/pet/findByTags" path="/pet/findByTags" id="7afd3021-bb07-4a1a-822a-f6f12899ab08">
       <con:settings/>
       <con:parameters/>
-      <con:method name="findPetsByTags" id="cb0dd069-f9bf-4d36-a7a5-5882e8bc9040" method="GET">
+      <con:method name="findPetsByTags" id="2cdf2572-7c2d-46bf-b732-4cad69bba46c" method="GET">
         <con:description>Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
 Finds Pets by tags</con:description>
         <con:settings/>
@@ -381,14 +385,14 @@ Finds Pets by tags</con:description>
           <con:status>400</con:status>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="b6447cf4-ea36-4db2-a6a6-4857b25cef11" mediaType="application/json">
+        <con:request name="Request 1" id="29e4aa33-488f-4a5f-b31d-d5521c328ddf" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:parameters/>
         </con:request>
       </con:method>
     </con:resource>
-    <con:resource name="/pet/{petId}" path="/pet/{petId}" id="a4ef7872-59b4-44a1-8c93-7418df2bc7bf">
+    <con:resource name="/pet/{petId}" path="/pet/{petId}" id="abc65c11-ee23-4a50-92cd-83d451d488e0">
       <con:settings/>
       <con:parameters>
         <con:parameter required="true">
@@ -398,7 +402,7 @@ Finds Pets by tags</con:description>
           <con:description>Pet id to delete</con:description>
         </con:parameter>
       </con:parameters>
-      <con:method name="getPetById" id="b83a69f1-e1ac-4a00-ba9f-6716003a0677" method="GET">
+      <con:method name="getPetById" id="14a43e6d-fbb9-4c3f-bcad-948369de82aa" method="GET">
         <con:description>Returns a single pet
 Find pet by ID</con:description>
         <con:settings/>
@@ -452,13 +456,13 @@ Find pet by ID</con:description>
           <con:status>404</con:status>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="bcb8bce3-4568-4686-9d70-55868ffecc5c" mediaType="application/json">
+        <con:request name="Request 1" id="539c4518-2dde-44eb-b213-de899be0b721" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:parameters/>
         </con:request>
       </con:method>
-      <con:method name="updatePetWithForm" id="5e9fb54e-6767-4ebb-801b-6edfd7f209dd" method="POST">
+      <con:method name="updatePetWithForm" id="22f3b1c4-4d4e-4b74-bcf2-94b8aa43066b" method="POST">
         <con:description>
 Updates a pet in the store with form data</con:description>
         <con:settings/>
@@ -488,13 +492,13 @@ Updates a pet in the store with form data</con:description>
           <con:mediaType>application/x-www-form-urlencoded</con:mediaType>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="64e37917-6d5d-4094-99a9-c3a00b831302" mediaType="application/json">
+        <con:request name="Request 1" id="15f70bb3-3ad5-45ed-8c49-7bed90a26ad8" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:parameters/>
         </con:request>
       </con:method>
-      <con:method name="deletePet" id="631c7a95-8865-4b58-958e-bf19779a15ea" method="DELETE">
+      <con:method name="deletePet" id="6c6b5537-4df9-425f-be53-1553ec69039f" method="DELETE">
         <con:description>
 Deletes a pet</con:description>
         <con:settings/>
@@ -525,17 +529,17 @@ Deletes a pet</con:description>
           <con:status>404</con:status>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="149429ca-2129-477e-a582-9fa27bb71d75" mediaType="application/json">
+        <con:request name="Request 1" id="d10314e5-27a4-4d54-8882-da7c29c12219" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:parameters/>
         </con:request>
       </con:method>
     </con:resource>
-    <con:resource name="/store/inventory" path="/store/inventory" id="9f3494e3-573e-4838-aaa8-45f14ebd24ab">
+    <con:resource name="/store/inventory" path="/store/inventory" id="dff1ea52-15fe-4b1c-884a-5a7af0361431">
       <con:settings/>
       <con:parameters/>
-      <con:method name="getInventory" id="491fd285-1990-4467-aa65-e10432b463da" method="GET">
+      <con:method name="getInventory" id="34371f6d-95a0-43ea-8e16-0cfd0312e305" method="GET">
         <con:description>Returns a map of status codes to quantities
 Returns pet inventories by status</con:description>
         <con:settings/>
@@ -550,17 +554,17 @@ Returns pet inventories by status</con:description>
   "additionalProp3" : 0
 }</con:sampleContent>
         </con:representation>
-        <con:request name="Request 1" id="74b0e4f4-80f0-4a60-b8e3-be364269d0b1" mediaType="application/json">
+        <con:request name="Request 1" id="21f17255-cdea-42e9-851f-45cc846b64cb" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:parameters/>
         </con:request>
       </con:method>
     </con:resource>
-    <con:resource name="/store/order" path="/store/order" id="f1813a1d-8a34-4ed6-a098-d178f6fcae01">
+    <con:resource name="/store/order" path="/store/order" id="0093cc06-d4d9-4038-b2a1-43c4bd36983c">
       <con:settings/>
       <con:parameters/>
-      <con:method name="placeOrder" id="eec2a5b1-2b45-4d02-91ee-b10240bff8cb" method="POST">
+      <con:method name="placeOrder" id="f692d1b3-6540-4385-8d5b-af17186b8c87" method="POST">
         <con:description>
 Place an order for a pet</con:description>
         <con:settings/>
@@ -617,7 +621,7 @@ Place an order for a pet</con:description>
           <con:mediaType>application/json</con:mediaType>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="6c9a23bf-b2a8-4458-bc49-37b32e1ddca2" mediaType="application/json">
+        <con:request name="Request 1" id="6d42890d-f3f0-48f6-8587-90f17eaea726" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:request>{
@@ -636,7 +640,7 @@ Place an order for a pet</con:description>
         </con:request>
       </con:method>
     </con:resource>
-    <con:resource name="/store/order/{orderId}" path="/store/order/{orderId}" id="abedf38f-adaf-49cd-af7f-67f098dada64">
+    <con:resource name="/store/order/{orderId}" path="/store/order/{orderId}" id="11aaf3b0-46a4-4b22-91ae-d4d44c19bd65">
       <con:settings/>
       <con:parameters>
         <con:parameter required="true">
@@ -646,7 +650,7 @@ Place an order for a pet</con:description>
           <con:description>ID of the order that needs to be deleted</con:description>
         </con:parameter>
       </con:parameters>
-      <con:method name="getOrderById" id="1bf05450-1fa1-4ac4-9d94-6c4fb6f0401c" method="GET">
+      <con:method name="getOrderById" id="eb39cff8-3812-437f-8f21-f673137086e1" method="GET">
         <con:description>For valid response try integer IDs with value >= 1 and &lt;= 10. Other values will generated exceptions
 Find purchase order by ID</con:description>
         <con:settings/>
@@ -697,13 +701,13 @@ Find purchase order by ID</con:description>
           <con:status>404</con:status>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="c32f501c-04f6-4ae1-af0b-8a4b1e86fd4a" mediaType="application/json">
+        <con:request name="Request 1" id="75790457-a159-4566-a550-dd9def9d618d" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:parameters/>
         </con:request>
       </con:method>
-      <con:method name="deleteOrder" id="08db55af-a604-4ea0-ad26-4b0dbf13be07" method="DELETE">
+      <con:method name="deleteOrder" id="e4f230e5-538c-4a9c-b65f-b9a542bcb285" method="DELETE">
         <con:description>For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors
 Delete purchase order by ID</con:description>
         <con:settings/>
@@ -728,17 +732,17 @@ Delete purchase order by ID</con:description>
           <con:status>404</con:status>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="ba0e19ca-5031-4c0b-88b8-da42292e5e93" mediaType="application/json">
+        <con:request name="Request 1" id="fbce8011-4833-44a6-8689-f3f71adbe662" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:parameters/>
         </con:request>
       </con:method>
     </con:resource>
-    <con:resource name="/user/createWithList" path="/user/createWithList" id="a75c5ef1-1486-4019-9e68-30d99b764c55">
+    <con:resource name="/user/createWithList" path="/user/createWithList" id="ef8ea844-888f-491d-be65-05531dd2c1e1">
       <con:settings/>
       <con:parameters/>
-      <con:method name="createUsersWithListInput" id="49371d5f-144a-44f7-a13c-2cefcc748ff9" method="POST">
+      <con:method name="createUsersWithListInput" id="ee45ae5c-40a2-4e6d-a97f-cb737229db62" method="POST">
         <con:description>
 Creates list of users with given input array</con:description>
         <con:settings/>
@@ -762,7 +766,7 @@ Creates list of users with given input array</con:description>
           <con:mediaType>application/json</con:mediaType>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="d88c3ebc-ee8d-47d5-a1f2-0ba0db4c4b26" mediaType="application/json">
+        <con:request name="Request 1" id="26d63e88-c4c7-47ab-92a7-14fe8ee1db58" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:request>{ }</con:request>
@@ -774,7 +778,7 @@ Creates list of users with given input array</con:description>
         </con:request>
       </con:method>
     </con:resource>
-    <con:resource name="/user/{username}" path="/user/{username}" id="6c308e96-01a9-4b31-b539-31ea8a7e0cda">
+    <con:resource name="/user/{username}" path="/user/{username}" id="6cda830e-cb76-4665-bd14-7886fa21c55f">
       <con:settings/>
       <con:parameters>
         <con:parameter required="true">
@@ -783,7 +787,7 @@ Creates list of users with given input array</con:description>
           <con:description>The name that needs to be deleted</con:description>
         </con:parameter>
       </con:parameters>
-      <con:method name="getUserByName" id="a118e9e3-b047-416e-a9f9-b242202e39e9" method="GET">
+      <con:method name="getUserByName" id="3501b5bc-4c96-4f16-b7da-c6942544a302" method="GET">
         <con:description>
 Get user by user name</con:description>
         <con:settings/>
@@ -838,13 +842,13 @@ Get user by user name</con:description>
           <con:status>404</con:status>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="c9d8be43-3417-498e-978c-65ce3f07330c" mediaType="application/json">
+        <con:request name="Request 1" id="ce181ea1-e11b-4acf-ad78-07c86129d4b5" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:parameters/>
         </con:request>
       </con:method>
-      <con:method name="updateUser" id="1a76370e-7e90-4d67-9c56-b865dc9bb63d" method="PUT">
+      <con:method name="updateUser" id="53c47e4e-1f60-44fb-ad64-e7463d042b7c" method="PUT">
         <con:description>This can only be done by the logged in user.
 Updated user</con:description>
         <con:settings/>
@@ -887,7 +891,7 @@ Updated user</con:description>
           <con:mediaType>application/json</con:mediaType>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="8f758d03-d200-4dd2-bfc5-c217837414f8" mediaType="application/json">
+        <con:request name="Request 1" id="85104b15-0c9e-4c53-8012-1aa792d53ac1" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:request>{
@@ -907,7 +911,7 @@ Updated user</con:description>
           <con:parameters/>
         </con:request>
       </con:method>
-      <con:method name="deleteUser" id="476842b1-560e-48e0-abe5-781b0d13ee31" method="DELETE">
+      <con:method name="deleteUser" id="99e76893-e40a-49c8-a047-58dea98333a9" method="DELETE">
         <con:description>This can only be done by the logged in user.
 Delete user</con:description>
         <con:settings/>
@@ -932,17 +936,17 @@ Delete user</con:description>
           <con:status>404</con:status>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="4c455d63-4e05-405d-8320-41f25a1f54e1" mediaType="application/json">
+        <con:request name="Request 1" id="415e3185-6458-4236-b82c-7c4e0b9f2997" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:parameters/>
         </con:request>
       </con:method>
     </con:resource>
-    <con:resource name="/user/login" path="/user/login" id="cb216e50-dad1-4ae0-9628-ede4c94cd1a1">
+    <con:resource name="/user/login" path="/user/login" id="5b90108f-1865-4b8d-9cd9-699bca538d0f">
       <con:settings/>
       <con:parameters/>
-      <con:method name="loginUser" id="4225fe6c-5b42-40c0-bccf-bdd7b53831cf" method="GET">
+      <con:method name="loginUser" id="336b80a2-31ea-450e-84e8-ca099f8bf44e" method="GET">
         <con:description>
 Logs user into the system</con:description>
         <con:settings/>
@@ -980,17 +984,17 @@ Logs user into the system</con:description>
           <con:status>400</con:status>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="4fe9ae14-d0fc-4bc2-9cfa-4a807bcf4585" mediaType="application/json">
+        <con:request name="Request 1" id="f2f3f7d1-ea24-4e65-b8d6-232432eec0b9" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:parameters/>
         </con:request>
       </con:method>
     </con:resource>
-    <con:resource name="/user/logout" path="/user/logout" id="de082ac5-0fd1-4d2d-87e8-3b6b9512ae8f">
+    <con:resource name="/user/logout" path="/user/logout" id="0dc28fba-28e4-44b7-b012-c72af7775b59">
       <con:settings/>
       <con:parameters/>
-      <con:method name="logoutUser" id="4f2fc2c3-e63c-46e0-ac4d-d63e8a2e72ac" method="GET">
+      <con:method name="logoutUser" id="5b26cd73-680d-4ab7-8d56-e41a9f778626" method="GET">
         <con:description>
 Logs out current logged in user session</con:description>
         <con:settings/>
@@ -1005,17 +1009,17 @@ Logs out current logged in user session</con:description>
           <con:status/>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="f3cb324b-4ec9-4280-a4e1-f3b53e759368" mediaType="application/json">
+        <con:request name="Request 1" id="892b5f7e-b128-487e-8e3c-08a338879849" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:parameters/>
         </con:request>
       </con:method>
     </con:resource>
-    <con:resource name="/user/createWithArray" path="/user/createWithArray" id="a0d0465c-1fac-433f-92ff-51bdc7edd7e9">
+    <con:resource name="/user/createWithArray" path="/user/createWithArray" id="1f4ef7e7-70ee-4cba-be80-06091b52d80b">
       <con:settings/>
       <con:parameters/>
-      <con:method name="createUsersWithArrayInput" id="28677823-426c-4984-bd64-2b98b854a981" method="POST">
+      <con:method name="createUsersWithArrayInput" id="1c366e99-d133-4b09-bd22-663f437e2a65" method="POST">
         <con:description>
 Creates list of users with given input array</con:description>
         <con:settings/>
@@ -1039,7 +1043,7 @@ Creates list of users with given input array</con:description>
           <con:mediaType>application/json</con:mediaType>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="c124e6ab-81ec-4844-aa8d-949fac51363c" mediaType="application/json">
+        <con:request name="Request 1" id="82e3d6d9-023b-4d89-9a6f-9227ac8c5662" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:request>{ }</con:request>
@@ -1051,10 +1055,10 @@ Creates list of users with given input array</con:description>
         </con:request>
       </con:method>
     </con:resource>
-    <con:resource name="/user" path="/user" id="9b30144a-335e-4606-b78d-0ff13ccc57f5">
+    <con:resource name="/user" path="/user" id="d980bf86-004d-4b32-9fab-a26989db26fa">
       <con:settings/>
       <con:parameters/>
-      <con:method name="createUser" id="a689c5b8-554d-40a2-852d-0ef11371a2e2" method="POST">
+      <con:method name="createUser" id="a72ee8e7-9029-4b7f-8707-595091215248" method="POST">
         <con:description>This can only be done by the logged in user.
 Create user</con:description>
         <con:settings/>
@@ -1087,7 +1091,7 @@ Create user</con:description>
           <con:mediaType>application/json</con:mediaType>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="10f2a02b-89dd-450e-bdb8-6f7a02f28b1d" mediaType="application/json">
+        <con:request name="Request 1" id="dd64ec17-7184-4310-bdc9-e7493eae3d69" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:request>{
@@ -1109,62 +1113,56 @@ Create user</con:description>
       </con:method>
     </con:resource>
   </con:interface>
-  <con:testSuite id="1e9a1741-fa5a-4c61-9682-e809a8860e16" name="Petstore tests">
-    <con:settings id="453471c5-ac32-4fbc-b9a1-3cb12e4ff66b"/>
+  <con:testSuite id="baa6c6fa-c562-4a8b-a80a-b6e33e35ad4e" name="Test Suite 1">
+    <con:settings id="fd118b0a-05b6-445e-aa88-b490594e2998"/>
     <con:runType>SEQUENTIAL</con:runType>
-    <con:testCase id="275e6542-1ecd-4f1c-b922-b81f0bc9bc92" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="my first ready api test" searchProperties="true" timeout="0">
+    <con:testCase id="74aff2cc-7699-418f-bd69-ce4b3afc5716" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="TestCase 1" searchProperties="true" timeout="0">
       <con:settings/>
-      <con:testStep type="multiConfigureTestStep" name="API Connection" id="d64a7a36-b860-4934-99d9-99e473fc8b43">
+      <con:testStep type="restrequest" name="Add pet" id="394c4d78-381a-4696-8ced-86499398525b">
         <con:settings/>
-        <con:config activeStep="restMultiTestStep" xsi:type="con:MultiConfigurationStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-          <con:restRequestStep service="Swagger Petstore" methodName="addPet" resourcePath="/v2/pet" xsi:type="con:RestRequestStep">
-            <con:restRequest name="API Connection" id="5c8a46bf-5dfd-4f16-afdb-587071f90dc1" mediaType="application/json">
-              <con:settings/>
-              <con:encoding>UTF-8</con:encoding>
-              <con:endpoint>http://petstore.swagger.io</con:endpoint>
-              <con:request/>
-              <con:assertion type="Valid HTTP Status Codes" id="e62561ae-040f-44ce-8e0e-9350531abbab" name="Valid HTTP Status Codes">
-                <con:settings/>
-                <con:configuration>
-                  <codes>200</codes>
-                </con:configuration>
-              </con:assertion>
-              <con:assertion type="Response SLA Assertion" id="da08b129-2722-4f66-a060-f137a3ba344a" name="Response SLA">
-                <con:configuration>
-                  <SLA>200</SLA>
-                </con:configuration>
-              </con:assertion>
-              <con:credentials>
-                <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
-                <con:authType>No Authorization</con:authType>
-              </con:credentials>
-              <con:parameters/>
-              <con:parametersType/>
-              <con:parametersDisablesEncoding/>
-              <con:environmentSpec/>
-            </con:restRequest>
-          </con:restRequestStep>
-        </con:config>
-      </con:testStep>
-      <con:testStep type="restrequest" name="Add pet" id="ad9fb63e-1631-4806-9cbb-727066063482">
-        <con:settings/>
-        <con:config service="Swagger Petstore" methodName="addPet" resourcePath="/v2/pet" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-          <con:restRequest name="Add pet" id="52517b4a-3068-4893-9710-47164c802faa" mediaType="application/json" postQueryString="false">
+        <con:config service="Swagger Petstore" resourcePath="/v2/pet" methodName="addPet" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Add pet" id="dc174687-8243-4efa-8586-63c7ff8dfa4a" mediaType="application/xml" postQueryString="false">
             <con:settings>
               <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
             </con:settings>
-            <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://petstore.swagger.io</con:endpoint>
-            <con:request/>
-            <con:assertion type="Valid HTTP Status Codes" id="4165422b-961f-4613-982c-1846ce8dec69" name="Valid HTTP Status Codes">
+            <con:request><![CDATA[<Pet>
+   <id>0</id>
+   <Category>
+      <id>0</id>
+      <name>string</name>
+   </Category>
+   <name>MP-dog3000</name>
+   <photoUrlss>
+      <photoUrl>string</photoUrl>
+   </photoUrlss>
+   <tagss>
+      <tag>
+         <id>0</id>
+         <name>string</name>
+      </tag>
+   </tagss>
+   <status>available</status>
+</Pet>]]></con:request>
+            <con:originalUri>https://petstore.swagger.io/v2/pet</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="7b29a76d-7271-4d42-8587-ba1dd3ab5fa3" name="Valid HTTP Status Codes">
               <con:settings/>
               <con:configuration>
                 <codes>200</codes>
               </con:configuration>
             </con:assertion>
-            <con:assertion type="Response SLA Assertion" id="1e580057-8911-430c-94b8-af14dcee3874" name="Response SLA">
+            <con:assertion type="Response SLA Assertion" id="d9a37213-d2ad-4fd1-bd4f-aa5db30c949c" name="Response SLA">
               <con:configuration>
-                <SLA>200</SLA>
+                <SLA>2000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Existence Match" id="4c835331-19de-42ed-9625-580fd55a9efc" name="Check for existence of [id]">
+              <con:configuration>
+                <path>$['id']</path>
+                <content>true</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
               </con:configuration>
             </con:assertion>
             <con:credentials>
@@ -1176,12 +1174,45 @@ Create user</con:description>
           </con:restRequest>
         </con:config>
       </con:testStep>
+      <con:testStep type="restrequest" name="Get pet by id" id="78426acd-b4f6-4db3-8d27-8c1e5e28ad78">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/pet/{petId}" methodName="getPetById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Get pet by id" id="539c4518-2dde-44eb-b213-de899be0b721" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>https://petstore.swagger.io/v2/pet/</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="d8c76876-878d-4714-87ac-318c596717c1" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="40ef8e19-032f-4d74-973f-969a4dcd8da5" name="Response SLA">
+              <con:configuration>
+                <SLA>2000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="petId" value="${Add pet#Response#$['id']}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
       <con:properties/>
       <con:reportParameters/>
     </con:testCase>
     <con:properties/>
     <con:reportParameters/>
   </con:testSuite>
+  <con:requirements/>
   <con:properties/>
   <con:wssContainer/>
   <con:databaseConnectionContainer/>
