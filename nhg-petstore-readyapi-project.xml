@@ -331,10 +331,12 @@ Finds Pets by status</con:description>
         <con:request name="Request 1" id="94a25d88-a7b7-4753-90de-330f46f69f79" mediaType="application/json">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
+          <con:request/>
           <con:credentials>
             <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
             <con:authType>No Authorization</con:authType>
           </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
           <con:parameters/>
         </con:request>
       </con:method>
@@ -659,7 +661,7 @@ Place an order for a pet</con:description>
           <con:mediaType>application/json</con:mediaType>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="6d42890d-f3f0-48f6-8587-90f17eaea726" mediaType="application/json">
+        <con:request name="Request 1" id="6d42890d-f3f0-48f6-8587-90f17eaea726" mediaType="application/json" postQueryString="false">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:request>{
@@ -674,6 +676,7 @@ Place an order for a pet</con:description>
             <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
             <con:authType>No Authorization</con:authType>
           </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
           <con:parameters/>
         </con:request>
       </con:method>
@@ -812,7 +815,7 @@ Creates list of users with given input array</con:description>
           <con:mediaType>application/json</con:mediaType>
           <con:params/>
         </con:representation>
-        <con:request name="Request 1" id="26d63e88-c4c7-47ab-92a7-14fe8ee1db58" mediaType="application/json">
+        <con:request name="Request 1" id="26d63e88-c4c7-47ab-92a7-14fe8ee1db58" mediaType="application/json" postQueryString="false">
           <con:settings/>
           <con:endpoint>http://petstore.swagger.io</con:endpoint>
           <con:request>{ }</con:request>
@@ -820,6 +823,7 @@ Creates list of users with given input array</con:description>
             <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
             <con:authType>No Authorization</con:authType>
           </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
           <con:parameters/>
         </con:request>
       </con:method>
@@ -1212,12 +1216,12 @@ log.info "Generated pet name: ${uniquePetNameUpdated}"</script>
    <photoUrlss>
       <photoUrl>string</photoUrl>
    </photoUrlss>
-   <tagss>
+   <tags>
       <tag>
-         <id>0</id>
-         <name>string</name>
+         <id>1337</id>
+         <name>MP-firstTag</name>
       </tag>
-   </tagss>
+   </tags>
    <status>available</status>
 </Pet>]]></con:request>
             <con:originalUri>https://petstore.swagger.io/v2/pet</con:originalUri>
@@ -1259,6 +1263,33 @@ log.info "Generated pet name: ${uniquePetNameUpdated}"</script>
           </con:restRequest>
         </con:config>
       </con:testStep>
+      <con:testStep type="transfer" name="create petId property" id="cef5c5e0-b78f-4814-8555-ded751488239">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>petId</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>Add pet</con:sourceStep>
+            <con:sourcePath>$['id']</con:sourcePath>
+            <con:targetType>petId</con:targetType>
+            <con:targetStep>petId value</con:targetStep>
+            <con:targetPath/>
+            <con:type>JSONPATH</con:type>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="properties" name="petId value" id="c5cbd8c6-f143-41d5-b0ba-ceef4e959be5">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties>
+            <con:property>
+              <con:name>petId</con:name>
+              <con:value>9223372036854775807</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
       <con:testStep type="restrequest" name="Get pet by id" id="78426acd-b4f6-4db3-8d27-8c1e5e28ad78">
         <con:settings/>
         <con:config service="Swagger Petstore" resourcePath="/v2/pet/{petId}" methodName="getPetById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -1298,6 +1329,24 @@ log.info "Generated pet name: ${uniquePetNameUpdated}"</script>
                 <ignoreComments>false</ignoreComments>
               </con:configuration>
             </con:assertion>
+            <con:assertion type="JsonPath Match" id="a16e3af0-3c50-4d11-a57b-4c7e8c96caa9" name="Match content of [id]">
+              <con:configuration>
+                <path>$['tags'][0]['id']</path>
+                <content>1337</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="b207d867-73f4-4080-9308-8fa2fd092090" name="Match content of [name]">
+              <con:configuration>
+                <path>$['tags'][0]['name']</path>
+                <content>"MP-firstTag"</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
             <con:credentials>
               <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
               <con:authType>No Authorization</con:authType>
@@ -1327,13 +1376,13 @@ log.info "Generated pet name: ${uniquePetNameUpdated}"</script>
    <photoUrlss>
       <photoUrl>string</photoUrl>
    </photoUrlss>
-   <tagss>
+   <tags>
       <tag>
-         <id>0</id>
-         <name>string</name>
+         <id>133742</id>
+         <name>MP-secondTag</name>
       </tag>
-   </tagss>
-   <status>available</status>
+   </tags>
+   <status>pending</status>
 </Pet>]]></con:request>
             <con:originalUri>https://petstore.swagger.io/v2/pet</con:originalUri>
             <con:assertion type="Valid HTTP Status Codes" id="acfade79-9923-4642-a6f2-352f5f1f710d" name="Valid HTTP Status Codes">
@@ -1389,7 +1438,7 @@ log.info "Generated pet name: ${uniquePetNameUpdated}"</script>
             <con:assertion type="JsonPath Match" id="62e1d079-6d3f-4e7b-b3fa-3327d7364f05" name="Match content of [status]">
               <con:configuration>
                 <path>$['status']</path>
-                <content>"available"</content>
+                <content>"pending"</content>
                 <allowWildcards>false</allowWildcards>
                 <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
                 <ignoreComments>false</ignoreComments>
@@ -1402,6 +1451,60 @@ log.info "Generated pet name: ${uniquePetNameUpdated}"</script>
             <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
             <con:parameters>
               <con:entry key="petId" value="${Add pet#Response#$['id']}"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Get the updated pet by status" id="6cb6a59d-f719-4e04-9d8a-a504a721df2e">
+        <con:settings/>
+        <con:config service="Swagger Petstore" resourcePath="/v2/pet/findByStatus" methodName="findPetsByStatus" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Get the updated pet by status" id="94a25d88-a7b7-4753-90de-330f46f69f79" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://petstore.swagger.io</con:endpoint>
+            <con:request/>
+            <con:originalUri>https://petstore.swagger.io/v2/pet/findByStatus</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="52ff2094-02a7-4211-8488-0c216a1d3790" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="c83f696b-59ec-42b2-86f6-ffdc42fa1d8c" name="Match content of [name]">
+              <con:configuration>
+                <path>$[?(@.id == ${petId value#petId})].name[0]</path>
+                <content>${#TestCase#uniquePetNameUpdated}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Existence Match" id="2fa5f009-cfab-4d5f-ba8b-72e34cf7966f" name="Check for existence of [id]">
+              <con:configuration>
+                <path>$[?(@.id == ${Add pet#Response#$['id']})].id[0]</path>
+                <content>true</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="76aceb02-4da5-4f73-909c-0c556548f959" name="Match content of [id]">
+              <con:configuration>
+                <path>$[?(@.id == ${petId value#petId})].id[0]</path>
+                <content>${petId value#petId}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="status" value="${Update my pet#Response#$['status']}"/>
             </con:parameters>
           </con:restRequest>
         </con:config>
@@ -1489,11 +1592,11 @@ log.info "Generated pet name: ${uniquePetNameUpdated}"</script>
         </con:property>
         <con:property>
           <con:name>uniquePetName</con:name>
-          <con:value>MP-doggo-20260122-094619</con:value>
+          <con:value>MP-doggo-20260122-105725</con:value>
         </con:property>
         <con:property>
           <con:name>uniquePetNameUpdated</con:name>
-          <con:value>MP-doggo-20260122-094619-updated</con:value>
+          <con:value>MP-doggo-20260122-105725-updated</con:value>
         </con:property>
       </con:properties>
       <con:reportParameters/>
