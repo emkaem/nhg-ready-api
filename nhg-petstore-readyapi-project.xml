@@ -1180,6 +1180,20 @@ Create user</con:description>
     <con:runType>SEQUENTIAL</con:runType>
     <con:testCase id="74aff2cc-7699-418f-bd69-ce4b3afc5716" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="TestCase - CRUD the pet" searchProperties="true" timeout="0">
       <con:settings/>
+      <con:testStep type="groovy" name="Groovy Script" id="3e35a6fd-67c3-4f7d-a029-af4ec21137a6">
+        <con:settings/>
+        <con:config>
+          <script>def timestamp = new Date().format("yyyyMMdd-HHmmss")
+def uniquePetName = "MP-doggo-" + timestamp
+def uniquePetNameUpdated = uniquePetName + "-updated"
+
+testRunner.testCase.setPropertyValue("uniquePetName", uniquePetName)
+testRunner.testCase.setPropertyValue("uniquePetNameUpdated", uniquePetNameUpdated)
+
+log.info "Generated pet name: ${uniquePetName}"
+log.info "Generated pet name: ${uniquePetNameUpdated}"</script>
+        </con:config>
+      </con:testStep>
       <con:testStep type="restrequest" name="Add pet" id="394c4d78-381a-4696-8ced-86499398525b">
         <con:settings/>
         <con:config service="Swagger Petstore" resourcePath="/v2/pet" methodName="addPet" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -1194,7 +1208,7 @@ Create user</con:description>
       <id>0</id>
       <name>string</name>
    </Category>
-   <name>MP-dog3000</name>
+   <name>${#TestCase#uniquePetName}</name>
    <photoUrlss>
       <photoUrl>string</photoUrl>
    </photoUrlss>
@@ -1230,7 +1244,7 @@ Create user</con:description>
             <con:assertion type="JsonPath Match" id="9c6bd21a-5bb4-4c9b-bdf1-8ddac0e9c147" name="Match content of [name]">
               <con:configuration>
                 <path>$['name']</path>
-                <content>"MP-dog3000"</content>
+                <content>${#TestCase#uniquePetName}</content>
                 <allowWildcards>false</allowWildcards>
                 <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
                 <ignoreComments>false</ignoreComments>
@@ -1269,7 +1283,7 @@ Create user</con:description>
             <con:assertion type="JsonPath Match" id="9232ac23-b166-4ccd-b757-910e8114d73e" name="Match content of [name]">
               <con:configuration>
                 <path>$['name']</path>
-                <content>"MP-dog3000"</content>
+                <content>${#TestCase#uniquePetName}</content>
                 <allowWildcards>false</allowWildcards>
                 <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
                 <ignoreComments>false</ignoreComments>
@@ -1309,7 +1323,7 @@ Create user</con:description>
       <id>0</id>
       <name>string</name>
    </Category>
-   <name>MP-dog3000v2</name>
+   <name>${#TestCase#uniquePetNameUpdated}</name>
    <photoUrlss>
       <photoUrl>string</photoUrl>
    </photoUrlss>
@@ -1366,7 +1380,7 @@ Create user</con:description>
             <con:assertion type="JsonPath Match" id="9232ac23-b166-4ccd-b757-910e8114d73e" name="Match content of [name]">
               <con:configuration>
                 <path>$['name']</path>
-                <content>"MP-dog3000v2"</content>
+                <content>${#TestCase#uniquePetNameUpdated}</content>
                 <allowWildcards>false</allowWildcards>
                 <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
                 <ignoreComments>false</ignoreComments>
@@ -1434,30 +1448,24 @@ Create user</con:description>
             <con:endpoint>http://petstore.swagger.io</con:endpoint>
             <con:request/>
             <con:originalUri>https://petstore.swagger.io/v2/pet/</con:originalUri>
-            <con:assertion type="Valid HTTP Status Codes" id="d8c76876-878d-4714-87ac-318c596717c1" name="Valid HTTP Status Codes">
-              <con:settings/>
-              <con:configuration>
-                <codes>200</codes>
-              </con:configuration>
-            </con:assertion>
             <con:assertion type="Response SLA Assertion" id="40ef8e19-032f-4d74-973f-969a4dcd8da5" name="Response SLA">
               <con:configuration>
                 <SLA>2000</SLA>
               </con:configuration>
             </con:assertion>
-            <con:assertion type="JsonPath Match" id="f5e51d3c-dd50-4772-9558-cd52b6b6954d" name="Match content of [id]">
+            <con:assertion type="JsonPath Match" id="8d3cd0c3-e5e0-4f72-8655-2c97c57a83b4" name="Match content of [code]">
               <con:configuration>
-                <path>$['id']</path>
-                <content>9223372036854775807</content>
+                <path>$['code']</path>
+                <content>1</content>
                 <allowWildcards>false</allowWildcards>
                 <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
                 <ignoreComments>false</ignoreComments>
               </con:configuration>
             </con:assertion>
-            <con:assertion type="JsonPath Match" id="bbc85a8d-2c93-4a80-8fb0-7bd3dd1c6087" name="Match content of [name]">
+            <con:assertion type="JsonPath Match" id="1e262c0e-67c0-464b-ac30-cf33b439cc04" name="Match content of [message]">
               <con:configuration>
-                <path>$['name']</path>
-                <content>"doggie"</content>
+                <path>$['message']</path>
+                <content>"Pet not found"</content>
                 <allowWildcards>false</allowWildcards>
                 <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
                 <ignoreComments>false</ignoreComments>
@@ -1474,7 +1482,20 @@ Create user</con:description>
           </con:restRequest>
         </con:config>
       </con:testStep>
-      <con:properties/>
+      <con:properties>
+        <con:property>
+          <con:name>petName</con:name>
+          <con:value>MP-doggo-20260122-093156</con:value>
+        </con:property>
+        <con:property>
+          <con:name>uniquePetName</con:name>
+          <con:value>MP-doggo-20260122-094619</con:value>
+        </con:property>
+        <con:property>
+          <con:name>uniquePetNameUpdated</con:name>
+          <con:value>MP-doggo-20260122-094619-updated</con:value>
+        </con:property>
+      </con:properties>
       <con:reportParameters/>
     </con:testCase>
     <con:testCase id="6ba1c81a-60ba-4007-a34d-0cfcfa2bab2f" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="Test Case - add pet - edge cases" searchProperties="true" timeout="0">
